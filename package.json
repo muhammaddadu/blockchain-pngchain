@@ -2,15 +2,15 @@
   "name": "react-boilerplate",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack",
+    "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "UNLICENSED",
   "dependencies": {
+    "clout-js": "^1.1.2",
     "cross-fetch": "^1.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
