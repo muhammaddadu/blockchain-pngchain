@@ -7,15 +7,21 @@ REACT BOILERPLATE
 npm install
 ```
 
-## Development
+### Development
 ```bash
-npm run start
+NODE_ENV=development npm run start
 open http://localhost:8080
 ```
 
-## Build
+### Production
 ```bash
-npm run build
+NODE_ENV=production node .
+open http://localhost:8080
 ```
 
-The output will be available at ```/build```.
+## Scaffold Info
+
+ - **apis/** BE(contains the endpoints for this application)
+ - **webpack/**  FE(Webpack configuration)
+ - **conf/** BE(configuration used inside the application)
+ - **src/**  FE(this is sourcefile for front-end stuff)
