@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     entry: {
-        app: './src/app.js'
+        app: './src/main.js'
     },
     output: {
         path: path.resolve(__dirname, '../dist'),
@@ -39,6 +39,10 @@ module.exports = {
             {
                 test: /\.(ttf|eot|woff2?)(\?v=[a-z0-9=\.]+)?$/i,
                 loader: 'file-loader?name=./fonts/[name].[ext]'
+            },
+            {
+                test: /\.(svg|svg)$/i,
+                loader: 'url-loader?name=./assets/[name].[ext]'
             }
         ]
     },
@@ -47,6 +51,13 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './src/index.html',
             inject: 'body'
-        })
+        }),
+        function() {
+            this.plugin("done", function (stats) {
+                if (stats.compilation.errors && stats.compilation.errors.length) {
+                    console.error(stats.compilation.errors);
+                }
+            });
+        }
     ]
 };

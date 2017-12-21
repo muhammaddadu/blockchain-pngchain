@@ -36,7 +36,7 @@ const app = module.exports = {
     startServer() {
         if (this.serverStarted) { return; }
         this.serverStarted = true;
-        clout.start();
+
         clout.on('started', function () {
             if (clout.server.https) {
                 clout.logger.info('https server started on port %s', clout.server.https.address().port);
@@ -45,7 +45,7 @@ const app = module.exports = {
                 clout.logger.info('http server started on port %s', clout.server.http.address().port);
             }
         });
-        
+        clout.start();
     },
     initialize() {
         this.compiler = webpack(webpackConfig);
