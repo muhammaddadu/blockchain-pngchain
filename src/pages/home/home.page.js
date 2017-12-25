@@ -9,6 +9,7 @@ import {setStyle} from '../../actions'
 
 import { HeaderComponent } from '../../components/header/header.component';
 import { JumbotronComponent } from '../../components/jumbotron/jumbotron.component';
+import { CurrencyPrices } from '../../components/currencyprices/currencyprices.component';
 
 export class HomePage extends React.Component {
     constructor(props) {
@@ -25,6 +26,27 @@ export class HomePage extends React.Component {
             <div>
                 <HeaderComponent {...this.props} />
                 <JumbotronComponent {...this.props} />
+
+                <div className="container homepage-signup">
+                    <div className="row">
+                        <div className="col-sm-6">
+                            <h3>Store your cryptocurrency with ease</h3>
+                            <p>
+                                Securely store you crypto currency in your account at Qoinbank. We will be paving the way for a future with only crypto coins.<br />
+                                This is perfect for investors looking to aquiring cryptocurrency.
+                            </p>
+                        </div>
+
+                        <div className="col-sm-6">
+
+                        </div>
+                    </div>
+                </div>
+                <div className="homepage-currencyprices">
+                    <div className="container">
+                        <CurrencyPrices {...this.props}></CurrencyPrices>
+                    </div>
+                </div>
             </div>
         );
     }

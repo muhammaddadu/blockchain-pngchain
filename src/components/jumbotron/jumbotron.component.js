@@ -2,7 +2,6 @@
  * Jumbotron Component
  */
 import React from 'react';
-import './jumbotron.component.scss';
 
 export class JumbotronComponent extends React.Component {
     constructor(props) {
@@ -14,12 +13,12 @@ export class JumbotronComponent extends React.Component {
         return (
             <div className="coinbank-jumbotron">
                 <div className="container">
-                    <div class="row">
-                        <div className="col-md-6 coinbank-jumbotron-info-container">
+                    <div className="row">
+                        <div className="col-sm-6 coinbank-jumbotron-info-container">
                             <h1 className="coinbank-jumbotron-title">Your Digital Currency Account</h1>
                             <p className="coinbank-jumbotron-subtitle">At coinbank, we provide you a solution to hold an Digital Currency Account with the benefits of a normal bank.</p>
                         </div>
-                        <div className="col-md-6 coinbank-jumbotron-logo-container">
+                        <div className="col-sm-6 coinbank-jumbotron-logo-container">
                             <img className="coinbank-jumbotron-logo" src={require('../../assets/logo.svg')} />
                         </div>
                     </div>

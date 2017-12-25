@@ -2,7 +2,6 @@
  * Header Component
  */
 import React from 'react';
-import './header.component.scss';
 
 export class HeaderComponent extends React.Component {
     constructor(props) {
@@ -24,7 +23,7 @@ export class HeaderComponent extends React.Component {
 
         return (
             <nav className={classNames.join(' ')}>
-                <div class="container">
+                <div className="container">
                     <a className="navbar-brand" href="#">Qoinbank</a>
                 </div>
             </nav>

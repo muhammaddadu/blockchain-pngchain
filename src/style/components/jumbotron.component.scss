@@ -1,0 +1,62 @@
+.coinbank-jumbotron {
+    color: #FFF;
+    padding: 1rem 1rem 2rem;
+    text-align: center;
+    background-color: #2775AE;
+    background-image: url('../assets/logo-background.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 99%;
+    background-position: top center;
+
+    @include media-breakpoint-up(sm) {
+        text-align: left;
+        padding: 4rem 2rem 3rem;
+        background-image: none;
+     }
+
+    .coinbank-jumbotron-title {
+        font-size: 36px;
+        font-weight: 700;
+
+        @include media-breakpoint-up(sm) {
+            font-size: 48px;
+        }
+    }
+
+    .coinbank-jumbotron-subtitle {
+        font-size: 16px;
+        font-weight: 100;
+    }
+    
+    .coinbank-jumbotron-info-container {
+        margin-top: 60px;
+
+        @include media-breakpoint-up(sm) {
+            margin-top: 100px;
+        }
+    }
+
+    .coinbank-jumbotron-logo-container {
+        text-align: center;
+        background-image: url('../assets/logo-background.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        min-height: 350px;
+        display: none;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: -20px;
+
+        @include media-breakpoint-up(sm) {
+            display: flex;
+        }
+
+        .coinbank-jumbotron-logo {
+            padding-top: 80px;
+            width: 170px;
+        }
+    }
+}
