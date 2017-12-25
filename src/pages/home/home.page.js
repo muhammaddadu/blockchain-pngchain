@@ -38,7 +38,11 @@ export class HomePage extends React.Component {
                         </div>
 
                         <div className="col-sm-6">
-
+                            <div className="card">
+                                <div className="card-block">
+                                    Ether or Smart Coin Card
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

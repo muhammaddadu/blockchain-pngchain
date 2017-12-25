@@ -11,8 +11,11 @@ export class CurrencyPriceItem extends React.Component {
 
     render() {
         return (
-            <div className="">
-                Hello World
+            <div className="text-center">
+                <h5>&pound; {this.props.GBP_VALUE}</h5>
+                <h5>Q {this.props.QOIN_VALUE}</h5>
+                <h4>{this.props.currencyName}</h4>
+                {this.props.technologyName?(<small>({this.props.technologyName})</small>): ''}
             </div>
         )
     }
@@ -26,11 +29,34 @@ export class CurrencyPrices extends React.Component {
 
     render() {
         let items = [
-            {a: 1},
-            {a: 1},
-            {a: 1},
-            {a: 1},
-            {a: 1}
+            {
+                currencyName: 'Ether',
+                GBP_VALUE: '999',
+                QOIN_VALUE: '3',
+                technologyName: 'Etherium'
+            },
+            {
+                currencyName: 'Bitcoin',
+                GBP_VALUE: '999',
+                QOIN_VALUE: '3'
+            },
+            {
+                currencyName: 'Litecoin',
+                GBP_VALUE: '999',
+                QOIN_VALUE: '3'
+            },
+            {
+                currencyName: 'Ada',
+                GBP_VALUE: '999',
+                QOIN_VALUE: '3',
+                technologyName: 'Cardano'
+            },
+            {
+                currencyName: 'Qoin',
+                GBP_VALUE: '999',
+                QOIN_VALUE: '3',
+                technologyName: 'QoinBank'
+            }
         ];
 
         return (
