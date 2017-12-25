@@ -2,6 +2,7 @@
  * Jumbotron Component
  */
 import React from 'react';
+import { subscribeToCurrencyPrices } from '../../api';
 
 export class CurrencyPriceItem extends React.Component {
     constructor(props) {
@@ -25,6 +26,10 @@ export class CurrencyPrices extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
+
+        subscribeToCurrencyPrices((err, prices) => {
+            console.log(prices);
+        });
     }
 
     render() {

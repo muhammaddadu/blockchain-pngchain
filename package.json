@@ -9,15 +9,20 @@
   },
   "author": "",
   "license": "UNLICENSED",
+  "modules": [
+    "clout-socket-io"
+  ],
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
     "clout-js": "^1.1.2",
+    "clout-socket-io": "0.0.1",
     "cross-fetch": "^1.1.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "socket.io-client": "^2.0.4"
   },
   "devDependencies": {
     "autoprefixer": "^7.2.3",

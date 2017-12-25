@@ -21,7 +21,14 @@ const app = module.exports = {
         console.info('successfully build webpack');
         console.info(`duration: ${duration}s`);
 
-        clout.registerHook('start', () => clout.app.use(express.static(this.compiler.outputPath)), 'CONTROLLER');
+        clout.registerHook('start', (next) => {
+            clout.app.use(express.static(this.compiler.outputPath));
+            next();
+        }, 'CONTROLLER');
+        clout.registerHook('start', (next) => {
+            this.setupSockets();
+            next();
+        }, 'CONTROLLER');
 
         this.startServer();
     },
@@ -45,6 +52,7 @@ const app = module.exports = {
                 clout.logger.info('http server started on port %s', clout.server.http.address().port);
             }
         });
+
         clout.start();
     },
     initialize() {
@@ -56,6 +64,15 @@ const app = module.exports = {
             default:
                 this.compiler.watch(COMPILER_WATCH_OPTIONS, (err, stats) => this.onCompilerWatch(err, stats));
         }
+    },
+    setupSockets() {
+        clout.sio.sockets.on('connection', function (socket) {
+            socket.on('GET_CURRENCY_PRICES', () => {
+                socket.emit('CURRENCY_PRICES', {
+                    hello: 'world'
+                });
+            });
+        });
     }
 };
 
