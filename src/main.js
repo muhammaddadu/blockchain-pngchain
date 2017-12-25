@@ -4,24 +4,36 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { Router } from './router';
-import { HeaderComponent } from './components/header/header.component';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { routerReducer } from 'react-router-redux';
+import thunk from 'redux-thunk';
+import reducers from './reducers/index';
 import './style/main.scss';
 
 const TARGET_EL = document.getElementById('app');
 
 const App = () => (
     <div>
-      <HeaderComponent />
       <Router />
     </div>
 );
 
+
+export const store = createStore(
+    combineReducers({
+        ...reducers,
+        routing: routerReducer
+    }),
+    applyMiddleware(thunk)
+);
+
 ReactDOM.render((
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
+    <Provider store={store}>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </Provider>
 ), TARGET_EL);
