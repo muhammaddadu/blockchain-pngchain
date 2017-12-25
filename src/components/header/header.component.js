@@ -10,13 +10,13 @@ export class HeaderComponent extends React.Component {
         this.props = props;
     }
 
-    render(props) {
-        let classNames = ['navbar', 'navbar-toggleable-md', 'navbar-inverse'];
+    render() {
+        let classNames = ['coinbank-navbar', 'navbar', 'navbar-toggleable-md', 'navbar-inverse'];
         console.log('redering header');
         console.log(this.props);
         switch (this.props.header.style) {
             case 'jumbotron':
-                classNames.push('navbar--jumbotron');
+                classNames.push('coinbank-navbar-jumbotron');
                 break;
             default:
                 classNames.push('fixed-top', 'bg-inverse');
@@ -24,7 +24,9 @@ export class HeaderComponent extends React.Component {
 
         return (
             <nav className={classNames.join(' ')}>
-                <a className="navbar-brand" href="#">Qoinbank</a>
+                <div class="container">
+                    <a className="navbar-brand" href="#">Qoinbank</a>
+                </div>
             </nav>
         );
     }
