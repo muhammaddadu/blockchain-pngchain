@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { HomePageContainer } from './pages/home/home.page';
+import { HomePageContainer } from './containers/home/home.container';
 
 const renderMergedProps = (component, ...rest) => {
     const finalProps = Object.assign({}, ...rest);

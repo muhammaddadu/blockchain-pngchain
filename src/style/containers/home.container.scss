@@ -1,0 +1,22 @@
+.homepage-signup {
+    padding: 2rem 2rem;
+
+    @include media-breakpoint-up(lg) {
+        padding: 3rem 0;
+    }
+}
+
+.homepage-signup-modal {
+    background-color: #E5E5E5;
+    min-height: 250px;
+
+    @include media-breakpoint-up(lg) {
+        margin-top: -7rem;
+    }
+}
+
+.homepage-currencyprices {
+    .container {
+        background: #D8D8D8;
+    }
+}

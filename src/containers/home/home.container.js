@@ -29,7 +29,7 @@ export class HomePage extends React.Component {
 
                 <div className="container homepage-signup">
                     <div className="row">
-                        <div className="col-sm-6">
+                        <div className="col-lg-7">
                             <h3>Store your cryptocurrency with ease</h3>
                             <p>
                                 Securely store you crypto currency in your account at Qoinbank. We will be paving the way for a future with only crypto coins.<br />
@@ -37,8 +37,8 @@ export class HomePage extends React.Component {
                             </p>
                         </div>
 
-                        <div className="col-sm-6">
-                            <div className="card">
+                        <div className="col-lg-4">
+                            <div className="card homepage-signup-modal">
                                 <div className="card-block">
                                     Ether or Smart Coin Card
                                 </div>
