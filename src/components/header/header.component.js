@@ -37,14 +37,22 @@ export class HeaderComponent extends React.Component {
 
     render() {
         let classNames = ['coinbank-navbar', 'navbar', 'navbar-toggleable-md', 'navbar-inverse'];
+        let animationClasses = [];
 
         switch (this.props.header.style) {
             case 'jumbotron':
+                animationClasses = ['fadeIn', 'animated'];
+                animationClasses.forEach((className) => classNames.push(className));
+                setTimeout(() => animationClasses.forEach((className) => this.navEl.classList.remove(className)), 1000);
                 classNames.push('coinbank-navbar-jumbotron');
                 this.initializeScrollHandler();
                 break;
             default:
+                animationClasses = ['slideInDown', 'animated'];
+                animationClasses.forEach((className) => classNames.push(className));
+                setTimeout(() => animationClasses.forEach((className) => this.navEl.classList.remove(className)), 1000);
                 classNames.push('fixed-top', 'bg-inverse');
+
                 if (!this.triggeredByScroll) {
                     this.triggeredByScroll = false;
                     window.removeEventListener('scroll', this.onScroll());
@@ -52,7 +60,8 @@ export class HeaderComponent extends React.Component {
         }
 
         return (
-            <nav className={classNames.join(' ')}>
+            <nav className={classNames.join(' ')}
+                 ref={(navEl) => { this.navEl = navEl; }}>
                 <div className="container">
                     <a className="navbar-brand" href="#">Qoinbank</a>
                 </div>

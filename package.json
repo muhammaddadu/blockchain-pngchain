@@ -4,8 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "dev": "nodemon .",
     "start": "node .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests/**/*.test.js"
   },
   "author": "",
   "license": "UNLICENSED",
@@ -13,10 +14,14 @@
     "clout-socket-io"
   ],
   "dependencies": {
+    "animate.css": "^3.5.2",
     "bootstrap": "^4.0.0-alpha.6",
     "clout-js": "^1.1.2",
     "clout-socket-io": "0.0.1",
     "cross-fetch": "^1.1.1",
+    "cryptox": "^1.2.1",
+    "mocha": "^4.1.0",
+    "nodemon": "^1.14.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",

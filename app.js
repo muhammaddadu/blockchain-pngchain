@@ -66,7 +66,16 @@ const app = module.exports = {
         }
     },
     setupSockets() {
+        let account = clout.exchanges.bitx;
+        account.getOpenOrders({pair: "LTC_USD"}, function (err, openOrders) {
+            if (err) {
+                return console.error(err);
+            }
+            console.log(openOrders);
+        });
+
         clout.sio.sockets.on('connection', function (socket) {
+            console.log(socket.request.session.id);
             socket.on('GET_CURRENCY_PRICES', () => {
                 socket.emit('CURRENCY_PRICES', {
                     hello: 'world'
