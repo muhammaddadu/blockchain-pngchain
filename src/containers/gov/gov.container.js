@@ -1,9 +1,7 @@
 import React from 'react';
 
 import {connect} from 'react-redux';
-import {showForm} from '../../actions';
-import {showSpinner} from '../../actions';
-import {govDone} from '../../actions';
+import {showForm, govSubmitRequest, showSpinner, govDone} from '../../actions';
 
 import { CommonHeader } from '../../components/header/commonHeader.component';
 
@@ -18,7 +16,7 @@ export class GovPage extends React.Component {
     }
     
     handleSubmitClick() {
-        this.props.onShowSpinner();
+        this.props.onSubmitRequest();
     }
 
     render() {
@@ -97,6 +95,7 @@ const stateToProps = (state) => {
 const dispatchToProps = (dispatch) => {
     return {
         onShowForm: (...args) => dispatch(showForm(...args)),
+        onSubmitRequest: (...args) => dispatch(govSubmitRequest(...args)),
         onShowSpinner: (...args) => dispatch(showSpinner(...args)),
         onGovDone: (...args) => dispatch(govDone(...args))
     };
