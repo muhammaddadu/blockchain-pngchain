@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {connect} from 'react-redux';
-import {showGraduation} from '../../actions';
+import {showGraduation, showGradingMessage} from '../../actions';
 
 import { CommonHeader } from '../../components/header/commonHeader.component';
 
@@ -15,8 +15,21 @@ export class CertPage extends React.Component {
         this.props.onShowGraduation();
     }
 
+    handleGradingClick() {
+        this.props.onShowGradingMessage();
+    }
+
     render() {
-        if (this.props.cert.graduation) {
+        if (this.props.cert.done) {
+            return (
+                <div className="mainContainer">
+                    <CommonHeader title={'Certification Authority'} />
+                    <div className="w-50 formContainer text-center">
+                        Test successfully graded
+                    </div>
+                </div>
+            );
+        } else if (this.props.cert.graduation) {
             return (
                 <div className="mainContainer">
                     <CommonHeader title={'Certification Authority'} />
@@ -26,8 +39,8 @@ export class CertPage extends React.Component {
                                 Test to review
                             </li>
                             <li className="formItemStyle">
-                                <input type="submit" value="Pass" className="gradeButton"/>
-                                <input type="submit" value="Fail" className="gradeButton"/>
+                                <input type="submit" value="Pass" className="gradeButton" onClick={this.handleGradingClick.bind(this)}/>
+                                <input type="submit" value="Fail" className="gradeButton" onClick={this.handleGradingClick.bind(this)}/>
                             </li>
                         </ul>
                     </div>
@@ -67,7 +80,8 @@ const stateToProps = (state) => {
 
 const dispatchToProps = (dispatch) => {
     return {
-        onShowGraduation: (...args) => dispatch(showGraduation(...args))
+        onShowGraduation: (...args) => dispatch(showGraduation(...args)),
+        onShowGradingMessage: (...args) => dispatch(showGradingMessage(...args)),
     };
 };
 

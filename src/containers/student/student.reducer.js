@@ -2,13 +2,13 @@
  * Header reducer
  */
 
-export function certReducer(state={}, action) {
+export function studentReducer(state={}, action) {
     switch (action.type) {
-        case 'SHOW_GRADUATION':
+        case 'SHOW_STUDENT_SPINNER':
             return {...state, ...{
-                graduation: true
+                spinner: true
             }};
-        case 'SHOW_GRADING_MSG':
+        case 'STUDENT_DONE':
             return {...state, ...{
                 done: true
             }};
