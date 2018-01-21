@@ -2,7 +2,7 @@ import React from 'react';
 
 import {connect} from 'react-redux';
 
-import {showTeacherSpinner, teacherDone, teacherSubmitRequest} from '../../actions';
+import {showTeacherSpinner, teacherDone, teacherSubmitRequest, loadCurriculum} from '../../actions';
 
 import { CommonHeader } from '../../components/header/commonHeader.component';
 
@@ -11,9 +11,22 @@ export class TeacherPage extends React.Component {
         super(props);
         this.props = props;
     }
+    
+    componentWillMount() {
+        this.props.onLoadCurriculum();
+    }
 
     handleClick() {
         this.props.onTeacherSubmitRequest();
+    }
+
+    createSelectOptions() {
+        let curriculum = this.props.teacher.curriculum || [];
+        let items = curriculum.map((item, key) => (
+            <option key={key} value="{item.contractAddress}">{item.title}</option>
+        ));
+
+        return items;
     }
 
     render() {
@@ -37,6 +50,10 @@ export class TeacherPage extends React.Component {
                 </div>
             );
         } else {
+            let teacherAddress = '0x0F3E2B805DD942353A52E9DD22D0078a168697c2';
+            let studentAddress = '0x25b8e885C968DbA4D5D0208879D583F60a5e2DED';
+            let certAddress = '0x1320ae9c2945c03c9c5298f3604c7b7407d039b5';
+
             return (
                 <div className="mainContainer">
                     <CommonHeader title={'Teacher'} />
@@ -45,23 +62,20 @@ export class TeacherPage extends React.Component {
                             <li className="formItemStyle">
                                 <label htmlFor="teacherContract" className="w-150">Teaching contract: </label>
                                 <select name="teacherContract" id="teacherContract" className="w-175">
-                                    <option value="0">Contract 1</option>
-                                    <option value="1">Contract 2</option>
-                                    <option value="2">Contract 3</option>
-                                    <option value="3">Contract 4</option>
+                                    {this.createSelectOptions()}
                                 </select>
                             </li>
                             <li className="formItemStyle">
                                 <label htmlFor="teacherStudentAddress" className="w-150">Student Address: </label>
-                                <input type="text" id="teacherStudentAddress" placeholder="'Student Address'" className="w-175"/>
+                                <input type="text" id="teacherStudentAddress" defaultValue={studentAddress} placeholder="'Student Address'" className="w-175"/>
                             </li>
                             <li className="formItemStyle">
                                 <label htmlFor="teacherAddress" className="w-150">Teacher Address: </label>
-                                <input type="text" id="teacherAddress" placeholder="'Teacher Address'" className="w-175"/>
+                                <input type="text" id="teacherAddress" defaultValue={teacherAddress} placeholder="'Teacher Address'" className="w-175"/>
                             </li>
                             <li className="formItemStyle">
                                 <label htmlFor="teacherCertAddress" className="w-150">Cert Address: </label>
-                                <input type="text" id="teacherCertAddress" placeholder="'Cert Address'" className="w-175"/>
+                                <input type="text" id="teacherCertAddress" defaultValue={certAddress} placeholder="'Cert Address'" className="w-175"/>
                             </li>
                             <li className="formItemStyle">
                                 <label htmlFor="teacherPassedContainer" className="w-150">Passed: </label>
@@ -91,6 +105,7 @@ const dispatchToProps = (dispatch) => {
         onShowTeacherSpinner: (...args) => dispatch(showTeacherSpinner(...args)),
         onTeacherDone: (...args) => dispatch(teacherDone(...args)),
         onTeacherSubmitRequest: (...args) => dispatch(teacherSubmitRequest(...args)),
+        onLoadCurriculum: (...args) => dispatch(loadCurriculum(...args))
     };
 };
 
