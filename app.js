@@ -2,6 +2,8 @@ const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
 const clout = require('clout-js');
 const express = require('express');
+const path = require('path');
+const fs = require('fs');
 
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const COMPILER_WATCH_OPTIONS = {
@@ -23,6 +25,7 @@ const app = module.exports = {
 
         clout.registerHook('start', (next) => {
             clout.app.use(express.static(this.compiler.outputPath));
+            clout.app.use('*', express.static(this.compiler.outputPath));
             next();
         }, 'CONTROLLER');
         clout.registerHook('start', (next) => {
