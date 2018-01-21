@@ -28,10 +28,6 @@ const app = module.exports = {
             clout.app.use('*', express.static(this.compiler.outputPath));
             next();
         }, 'CONTROLLER');
-        clout.registerHook('start', (next) => {
-            this.setupSockets();
-            next();
-        }, 'CONTROLLER');
 
         this.startServer();
     },

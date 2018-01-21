@@ -11,13 +11,16 @@
   "author": "",
   "license": "UNLICENSED",
   "modules": [
-    "clout-socket-io"
+    "clout-socket-io",
+    "clout-mongoose"
   ],
   "dependencies": {
     "VoiceIt": "^1.2.9",
     "animate.css": "^3.5.2",
+    "axios": "^0.17.1",
     "bootstrap": "^4.0.0-alpha.6",
     "clout-js": "^1.1.2",
+    "clout-mongoose": "0.0.3",
     "clout-socket-io": "0.0.1",
     "cross-fetch": "^1.1.1",
     "cryptox": "^1.2.1",

@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import {store} from '../../main';
+import api from '../../api';
 
 import {connect} from 'react-redux';
 import {setStyle} from '../../actions';
@@ -14,6 +15,8 @@ export class HomePage extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
+
+        api.curriculum.getAll().then(data => console.log(data));
     }
 
     render() {

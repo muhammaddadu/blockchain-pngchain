@@ -18,13 +18,12 @@ contract LearnerContract {
     }
     
     function approve() {
-        
+        // TODO: - Release the moneyz
         passed = true;
         hasBeenTested = true;
     }
     
     function fail() {
-        
         passed = false;
         hasBeenTested = true;
     }

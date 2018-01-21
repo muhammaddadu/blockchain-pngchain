@@ -19,7 +19,7 @@ contract CurriculumContract {
         uint student;
         uint teacher;
     }
-    
+
     Reward reward;
 
     LearnerContract[] learnerContracts;
@@ -74,5 +74,7 @@ contract CurriculumContract {
         learnerContracts.push(newLearnerContract);
         
         budgetUsed += reward.student + reward.teacher;
+
+        //TODO:- send money to LearnerContract
     }
 }
