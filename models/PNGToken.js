@@ -13,7 +13,7 @@ let contractCompiled = solc.compile({
 	sources: {
 		'PNGToken.sol': contractSource
 	}
-}, 1).contracts['Contract.sol:PNGToken'];
+}, 1).contracts['PNGToken.sol:PNGToken'];
 
 module.exports = {
     contractCompiled

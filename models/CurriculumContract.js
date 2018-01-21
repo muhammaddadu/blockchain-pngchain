@@ -17,7 +17,7 @@ let contractCompiled = solc.compile({
         'LearnerContract.sol': LearnerContractSource,
         'PNGToken.sol': PNGTokenSource
 	}
-}, 1).contracts['Contract.sol:LearnerContract'];
+}, 1).contracts['CurriculumContractSource.sol:CurriculumContract'];
 
 module.exports = {
     contractCompiled

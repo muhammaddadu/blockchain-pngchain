@@ -15,7 +15,7 @@ module.exports = {
             window.learnerContractCompiled = ${JSON.stringify(LearnerContract.contractCompiled)};
             window.pNGTokenCompiled = ${JSON.stringify(PNGToken.contractCompiled)};
 
-            loadContracts() {
+            function loadContracts() {
                 window.CurriculumContract = web3.eth.contract(JSON.parse(curriculumContractCompiled.interface));
                 window.LearnerContract = web3.eth.contract(JSON.parse(learnerContractCompiled.interface));
                 window.PNGToken = web3.eth.contract(JSON.parse(pNGTokenCompiled.interface));
@@ -24,7 +24,7 @@ module.exports = {
             if (window.web3) {
                 loadContracts();
             } else {
-                setTimeout(loadContracts, 0);
+                setTimeout(loadContracts, 100);
             }
         `);
 	}
