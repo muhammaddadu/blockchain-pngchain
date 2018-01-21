@@ -61,10 +61,21 @@ export const addPNGTokens = (data) => {
 
         myContract.approveAndCall(data.contractAddress, amount, null, {
             from: currentAccount
-        }, (err, address) => {
+        }, (err, transactionHash) => {
             if (err) { alert(err); }
-            dispatch(loadCurriculumInfo(data));
-            dispatch(pNGTokensAdded());
+
+            function getAddress() {
+                web3.eth.getTransactionReceipt(transactionHash, (err, info) => {
+                    if (err) { console.log(err); }
+                    if (!info || !info.blockHash) { return; }
+
+                    clearInterval(getAddress);
+                    dispatch(loadCurriculumInfo(data));
+                    dispatch(pNGTokensAdded());
+                });
+            }
+
+            setInterval(getAddress, 2000);
         });
     };
 }
