@@ -1,0 +1,22 @@
+.VoiceFormContainer {
+    width: 100%;
+    height: calc(100% - 66px);
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.VoiceFormArea {
+    width: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.VoiceFormArea > * {
+    margin-bottom: 10px; 
+}

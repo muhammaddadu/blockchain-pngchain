@@ -1,0 +1,57 @@
+html, body, #app, #app>div, #app>div>main {
+    width: 100%;
+    height: 100%;
+}
+
+.mainContainer {
+    width: 100%;
+    height: 100%;
+
+    background-image: url("../assets/papa.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.NewHeaderComponent {
+    width: 100%;
+    height: 50px;
+    font-size: 25px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.m-tb-4 {
+    padding: 16px 0 !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.titleContainer {
+    width: 100%;
+}
+
+.titleArea {
+    padding: 16px 0;
+    border: 1px solid black;
+    background-color: white;
+}
+
+.formContainer {
+    padding: 16px 8px;
+    border: 1px solid black;
+    background-color: white;
+}
