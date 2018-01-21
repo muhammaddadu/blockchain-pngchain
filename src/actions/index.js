@@ -110,3 +110,39 @@ export const loadCurriculumInfo = (_data) => {
         });
     }
 }
+
+/**
+ * Learner Actions
+ */
+export const learnerLoaded = createAction('LEARNER_LOADED');
+export const learnerInfoLoaded = createAction('LEARNER_INFO_LOADED');
+
+export const loadLearner = (data) => {
+    return (dispatch) => {
+        api.curriculum.getAll()
+            .then((data) => {
+                dispatch(learnerLoaded(data));
+            });
+    }
+}
+
+export const loadLearnerInfo = (_data) => {
+    return (dispatch) => {
+        let data = Object.assign({}, _data);
+        let Contract = window.LearnerContract;
+        let myContract = Contract.at(data.contractAddress);
+        let contractFields = ['passed', 'hasBeenTested'];
+        let responsesWanted = contractFields.length;
+        
+        contractFields.forEach((key) => {
+            myContract[key]((err, value) => {
+                if (err) { alert(err); }
+                data[key] = value;
+                responsesWanted--;
+                if (responsesWanted === 0) {
+                    dispatch(learnerInfoLoaded(data));
+                }
+            });
+        });
+    }
+}

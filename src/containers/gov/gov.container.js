@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {connect} from 'react-redux';
-import {showForm, govSubmitRequest, showSpinner, govDone, loadCurriculum, loadCurriculumInfo, addPNGTokens} from '../../actions';
+import {showForm, govSubmitRequest, showSpinner, govDone, loadCurriculum, loadCurriculumInfo, addPNGTokens, loadLearner} from '../../actions';
 
 import { CommonHeader } from '../../components/header/commonHeader.component';
 
@@ -22,6 +22,7 @@ export class GovPage extends React.Component {
 
     componentWillMount() {
         this.props.onLoadCurriculum();
+        this.props.onLoadLearner();
     }
 
     selectRow(evt) {
@@ -122,6 +123,7 @@ export class GovPage extends React.Component {
                                 ))}
                                 </div>
                             </div>
+
                             <div className="col-sm-8 formContainer">
                                 {this.props.gov.curriculumInfo ? (
                                     <div>
@@ -169,6 +171,14 @@ export class GovPage extends React.Component {
                                     <h4>Please select a curriculum from the left to see more information</h4>
                                 )}
                             </div>
+                            <br />
+                        </div>
+                        <div className="row justify-content-end hidden">
+                        {this.props.gov.curriculumInfo && this.props.gov.learner && this.props.gov.learner.filter((item) => item.contractAddress === this.props.gov.curriculumInfo.contractAddress).map((item, key) => (
+                            <div key={key} className="col-sm-8 formContainer">
+                                <pre>{JSON.stringify(item, null, '\t')}</pre>
+                            </div>
+                        ))}
                         </div>
                     </div>
                 </div>
@@ -191,7 +201,8 @@ const dispatchToProps = (dispatch) => {
         onGovDone: (...args) => dispatch(govDone(...args)),
         onLoadCurriculum: (...args) => dispatch(loadCurriculum(...args)),
         onSelectRow: (...args) => dispatch(loadCurriculumInfo(...args)),
-        onAddPNGTokens: (...args) => dispatch(addPNGTokens(...args))
+        onAddPNGTokens: (...args) => dispatch(addPNGTokens(...args)),
+        onLoadLearner: (...args) => dispatch(loadLearner(...args))
     };
 };
 

@@ -24,6 +24,14 @@ export function govReducer(state={}, action) {
             return {...state, ...{
                 curriculumInfo: action.data
             }};
+        case 'LEARNER_LOADED':
+            return {...state, ...{
+                learner: action.data
+            }};
+        case 'LEARNER_INFO_LOADED':
+            return {...state, ...{
+                learner: action.data
+            }};
         case 'PNG_TOKENS_ADDED':
             return {...state, ...{
                 spinner: false
