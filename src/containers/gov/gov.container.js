@@ -145,10 +145,10 @@ export class GovPage extends React.Component {
                                             </li>
                                             <li className="contratInfoItem row">
                                                 <div className="col-sm-6 p-0">
-                                                    <strong>Budget</strong>: {parseInt(this.props.gov.curriculumInfo.budget, 10)}
+                                                    <strong>Budget</strong>: {parseInt(this.props.gov.curriculumInfo.budget, 10)} PNGToken
                                                 </div>
                                                 <div className="col-sm-6 p-0">
-                                                    <strong>Budget used</strong>: {parseInt(this.props.gov.curriculumInfo.budgetUsed, 10)}
+                                                    <strong>Budget used</strong>: {parseInt(this.props.gov.curriculumInfo.budgetUsed, 10)} PNGToken
                                                 </div>
                                             </li>
                                         </ul>
