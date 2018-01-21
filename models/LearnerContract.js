@@ -19,7 +19,7 @@ let contractCompiled = solc.compile({
 	}
 }, 1).contracts['Contract.sol:LearnerContract'];
 
-let Contract = mongoose.model('Curriculum', {
+let Contract = mongoose.model('Learner', {
 	contractAddress: String,
 	curriculumContract: String,
 	teacher: String,
