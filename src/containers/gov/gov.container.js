@@ -13,7 +13,7 @@ export class GovPage extends React.Component {
     }
 
     render() {
-        if (props.form) {
+        if (this.props.form) {
             return (
                 <div className="mainContainer">
                     works!
