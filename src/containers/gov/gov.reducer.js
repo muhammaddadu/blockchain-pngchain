@@ -12,6 +12,10 @@ export function govReducer(state={}, action) {
             return {...state, ...{
                 spinner: true
             }};
+        case 'GOV_DONE':
+            return {...state, ...{
+                done: true
+            }};
         default:
             return state;
     }
