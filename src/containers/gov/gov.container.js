@@ -9,6 +9,13 @@ export class GovPage extends React.Component {
     constructor(props) {
         super(props);
         this.props = props;
+        this.state = {
+            contractTitle: 'Beginer English',
+            contractDescription: 'Teach students how to read english',
+            contractValidate: 'exam',
+            contractValueStudent: 1,
+            contractValueTeacher: 9
+        };
     }
 
     handleClick() {
@@ -16,7 +23,13 @@ export class GovPage extends React.Component {
     }
     
     handleSubmitClick() {
-        this.props.onSubmitRequest();
+        this.props.onSubmitRequest(this.state);
+    }
+
+    handleInputChange(type) {
+        return (evt) => {
+            this.state[type] = evt.target.value;
+        }
     }
 
     render() {
@@ -44,33 +57,33 @@ export class GovPage extends React.Component {
             return (
                 <div className="mainContainer">
                     <CommonHeader title={'Goverment'} />
-                    <div className="w-50 formContainer">
+                    <form className="w-50 formContainer">
                         <ul className="formItems">
                             <li className="formItemStyle">
                                 <label htmlFor="contractTitle" className="w-150">Title: </label>
-                                <input type="text" id="contractTitle" placeholder="'Teaching English'"/>
+                                <input type="text" onChange={this.handleInputChange('contractTitle')} value={this.state.contractTitle} id="contractTitle" placeholder="'Teaching English'"/>
                             </li>
                             <li className="formItemStyle">
                                 <label htmlFor="contractDescription" className="w-150">Description: </label>
-                                <input type="text" id="contractDescription" placeholder="'Teaching English so they can pass the test'"/>
+                                <input type="text" onChange={this.handleInputChange('contractDescription')} value={this.state.contractDescription} id="contractDescription" placeholder="'Teaching English so they can pass the test'"/>
                             </li>
                             <li className="formItemStyle">
                                 <label htmlFor="contractValidate" className="w-150">How to validate: </label>
-                                <input type="text" id="contractValidate" placeholder="'Passing the test'"/>
+                                <input type="text" onChange={this.handleInputChange('contractValidate')} value={this.state.contractValidate} id="contractValidate" placeholder="'Passing the test'"/>
                             </li>
                             <li className="formItemStyle">
                                 <label htmlFor="contractValueStudent" className="w-150">Value Student: </label>
-                                <input type="text" id="contractValueStudent" placeholder="'Student earnings'"/>
+                                <input type="number" onChange={this.handleInputChange('contractValueStudent')} value={this.state.contractValueStudent} id="contractValueStudent" placeholder="'Student earnings'"/>
                             </li>
                             <li className="formItemStyle">
                                 <label htmlFor="contractValueTeacher" className="w-150">Value Teacher: </label>
-                                <input type="text" id="contractValueTeacher" placeholder="'Teacher earnings'"/>
+                                <input type="number" onChange={this.handleInputChange('contractValueTeacher')} value={this.state.contractValueTeacher} id="contractValueTeacher" placeholder="'Teacher earnings'"/>
                             </li>
                             <li className="formItemStyle">
                                 <input type="submit" value="Submit" onClick={this.handleSubmitClick.bind(this)}/>
                             </li>
                         </ul>
-                    </div>
+                    </form>
                 </div>
             );
         } else {
