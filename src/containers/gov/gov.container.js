@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {connect} from 'react-redux';
-import {showForm, govSubmitRequest, showSpinner, govDone} from '../../actions';
+import {showForm, govSubmitRequest, showSpinner, govDone, loadCurriculum, loadCurriculumInfo, addPNGTokens} from '../../actions';
 
 import { CommonHeader } from '../../components/header/commonHeader.component';
 
@@ -14,8 +14,22 @@ export class GovPage extends React.Component {
             contractDescription: 'Teach students how to read english',
             contractValidate: 'exam',
             contractValueStudent: 1,
-            contractValueTeacher: 9
+            contractValueTeacher: 9,
         };
+    }
+
+    componentWillMount() {
+        this.props.onLoadCurriculum();
+    }
+
+    selectRow(evt) {
+        let item = JSON.parse(evt.target.getAttribute('item'));
+        this.props.onSelectRow(item);
+    }
+
+    addPNGTokens(evt) {
+        let item = JSON.parse(evt.target.getAttribute('item'));
+        this.props.onAddPNGTokens(item);
     }
 
     handleClick() {
@@ -90,8 +104,28 @@ export class GovPage extends React.Component {
             return (
                 <div className="mainContainer">
                     <CommonHeader title={'Goverment'} />
-                    <div className="w-50 formContainer">
-                        <button onClick={this.handleClick.bind(this)}>Add</button>
+
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-sm-4">
+                                <div className="list-group">
+                                <button className="list-group-item list-group-item-action" onClick={this.handleClick.bind(this)}>Add new curriculum</button>
+                                {this.props.gov.curriculum && this.props.gov.curriculum.map((item, key) => (
+                                    <button key={key} item={JSON.stringify(item)} onClick={this.selectRow.bind(this)} className="list-group-item list-group-item-action">{item.title}</button>
+                                ))}
+                                </div>
+                            </div>
+                            <div className="col-sm-8 formContainer">
+                                {this.props.gov.curriculumInfo ? (
+                                    <div>
+                                        <pre>{JSON.stringify(this.props.gov.curriculumInfo, null, '\t')}</pre>
+                                        <button item={JSON.stringify(this.props.gov.curriculumInfo)} onClick={this.addPNGTokens.bind(this)} type="button" className="btn btn-success">+ PNGTokens (Budget)</button>
+                                    </div>
+                                ) : (
+                                    <h4>Please select a curriculum from the left to see more information</h4>
+                                )}
+                            </div>
+                        </div>
                     </div>
                 </div>
             );
@@ -110,7 +144,10 @@ const dispatchToProps = (dispatch) => {
         onShowForm: (...args) => dispatch(showForm(...args)),
         onSubmitRequest: (...args) => dispatch(govSubmitRequest(...args)),
         onShowSpinner: (...args) => dispatch(showSpinner(...args)),
-        onGovDone: (...args) => dispatch(govDone(...args))
+        onGovDone: (...args) => dispatch(govDone(...args)),
+        onLoadCurriculum: (...args) => dispatch(loadCurriculum(...args)),
+        onSelectRow: (...args) => dispatch(loadCurriculumInfo(...args)),
+        onAddPNGTokens: (...args) => dispatch(addPNGTokens(...args))
     };
 };
 

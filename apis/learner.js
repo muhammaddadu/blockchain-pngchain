@@ -3,6 +3,7 @@ const _ = require('lodash');
 module.exports = {
     getAll: {
         path: '/learner',
+        method: 'GET',
         fn(req, resp, next) {
             req.models.LearnerContract.getAll()
                 .then((data) => resp.ok(data))
