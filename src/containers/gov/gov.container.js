@@ -143,6 +143,14 @@ export class GovPage extends React.Component {
                                                     <strong>Student reward</strong>: {this.props.gov.curriculumInfo.studentReward}
                                                 </div>
                                             </li>
+                                            <li className="contratInfoItem row">
+                                                <div className="col-sm-6 p-0">
+                                                    <strong>Budget</strong>: {parseInt(this.props.gov.curriculumInfo.budget, 10)}
+                                                </div>
+                                                <div className="col-sm-6 p-0">
+                                                    <strong>Budget used</strong>: {parseInt(this.props.gov.curriculumInfo.budgetUsed, 10)}
+                                                </div>
+                                            </li>
                                         </ul>
                                         <div className="row justify-content-between m-0">
                                             <div className="col-sm-6 p-0">
