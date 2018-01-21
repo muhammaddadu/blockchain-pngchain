@@ -20,6 +20,7 @@ export const showForm = createAction(govActions.SHOW_FORM);
 export const showSpinner = createAction(govActions.SHOW_SPINNER);
 export const govDone = createAction(govActions.GOV_DONE);
 export const govSubmitRequest = (data) => {
+    console.log(data);
     return (dispatch) => {
         dispatch(showSpinner(data));
         setTimeout(() => dispatch(govDone(data)), 2000);
