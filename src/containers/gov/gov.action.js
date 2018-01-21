@@ -42,16 +42,18 @@ export default {
                             return resolve({ contractAddress: contractInfo.address });
                         }
 
+                        let interval;
+
                         function getAddress() {
                             web3.eth.getTransactionReceipt(contractInfo.transactionHash, (err, info) => {
                                 if (!info || !info.contractAddress) { return; }
 
-                                clearInterval(getAddress);
+                                clearInterval(interval);
                                 return resolve(info);
                             });
                         }
 
-                        setInterval(getAddress, 2000);
+                        interval = setInterval(getAddress, 2000);
                     });
                 });
             })
