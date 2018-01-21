@@ -13,9 +13,11 @@ const mongoose = clout.mongoose;
 const REQUIRED_PARAMS = ['contractAddress', 'curriculumContract', 'teacher', 'student'];
 
 let contractSource = fs.readFileSync(path.join(__dirname, `solidity/LearnerContract.sol`), 'utf8');
+let PNGTokenSource = fs.readFileSync(path.join(__dirname, `solidity/PNGToken.sol`), 'utf8');
 let contractCompiled = solc.compile({
 	sources: {
-		'Contract.sol': contractSource
+		'Contract.sol': contractSource,
+		'PNGToken.sol': PNGTokenSource
 	}
 }, 1).contracts['Contract.sol:LearnerContract'];
 

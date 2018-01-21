@@ -69,12 +69,14 @@ contract CurriculumContract {
     function createLearnerContract(
         address _teacher,
         address _student
-    ) {
-        LearnerContract newLearnerContract = new LearnerContract(address(this), _teacher, _student);
+    ) public returns (PNGToken tokenAddress) {
+        LearnerContract newLearnerContract = new LearnerContract(pNGToken, address(this), _teacher, _student);
         learnerContracts.push(newLearnerContract);
+
+        pNGToken.approveAndCall(address(newLearnerContract), (reward.student + reward.teacher), '');
         
         budgetUsed += reward.student + reward.teacher;
 
-        //TODO:- send money to LearnerContract
+        return pNGToken;
     }
 }
