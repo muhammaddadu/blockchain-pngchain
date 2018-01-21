@@ -1,6 +1,7 @@
 import certActions from '../containers/cert/cert.action';
 import govActions from '../containers/gov/gov.action';
 import headerActions from '../components/header/header.action';
+import studentActions from '../containers/student/student.action';
 import teacherActions from '../containers/teacher/teacher.action';
 
 
@@ -27,6 +28,15 @@ export const govSubmitRequest = (data) => {
 };
 
 export const setStyle = createAction(headerActions.SET_STYLE);
+
+export const showStudentSpinner = createAction(studentActions.SHOW_STUDENT_SPINNER);
+export const studentDone = createAction(studentActions.STUDENT_DONE);
+export const studentSubmitRequest = (data) => {
+    return (dispatch) => {
+        dispatch(showStudentSpinner(data));
+        setTimeout(() => dispatch(studentDone(data)), 2000);
+    };
+};
 
 export const showTeacherSpinner = createAction(teacherActions.SHOW_TEACHER_SPINNER);
 export const teacherDone = createAction(teacherActions.TEACHER_DONE);
