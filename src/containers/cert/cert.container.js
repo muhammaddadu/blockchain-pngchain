@@ -36,7 +36,7 @@ export class CertPage extends React.Component {
                     <div className="w-50 formContainer">
                         <ul className="formItems">
                             <li className="formItemStyle">
-                                Test to review
+                                <div className="testToReview"></div>
                             </li>
                             <li className="formItemStyle">
                                 <input type="submit" value="Pass" className="gradeButton" onClick={this.handleGradingClick.bind(this)}/>

@@ -41,7 +41,7 @@ module.exports = {
                 loader: 'file-loader?name=./fonts/[name].[ext]'
             },
             {
-                test: /\.(svg|jpg)$/i,
+                test: /\.(svg|jpg|JPG)$/i,
                 loader: 'url-loader?name=./assets/[name].[ext]'
             }
         ]
