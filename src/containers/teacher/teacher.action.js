@@ -11,20 +11,33 @@ export default {
         return (dispatch) => {
             dispatch(showTeacherSpinner());
 
+
             new Promise((resolve, reject) => {
-                return web3.eth.getTransactionReceipt(transactionHash, (err, info) => {
+                contract.createLearnerContract(data.teacherAddress, data.studentAddress, {
+                    from: currentAccount
+                }, function (err, transactionHash) {
                     if (err) { return reject(err); }
-                    function getAddress() {
-                        web3.eth.getTransactionReceipt(transactionHash, (err, info) => {
-                            if (err) { console.log(err); }
-                            if (!info || !info.blockHash) { return; }
-    
-                            clearInterval(interval);
-                            resolve(info.blockHash);
-                        });
-                    }
-    
-                    interval = setInterval(getAddress, 2000);
+                    resolve(transactionHash);
+                });
+            })
+            .then((transactionHash) => {
+                return new Promise((resolve, reject) => {
+                    return web3.eth.getTransactionReceipt(transactionHash, (err, info) => {
+                        if (err) { return reject(err); }
+                        let interval;
+
+                        function getAddress() {
+                            web3.eth.getTransactionReceipt(transactionHash, (err, info) => {
+                                if (err) { console.log(err); }
+                                if (!info || !info.blockHash) { return; }
+        
+                                clearInterval(interval);
+                                resolve(info.blockHash);
+                            });
+                        }
+        
+                        interval = setInterval(getAddress, 2000);
+                    });
                 });
             })
             .then((blockHash) => {
@@ -35,16 +48,8 @@ export default {
                     student: data.studentAddress
                 });
             })
-            .then(() => dispatch(teacherDone(info)))
+            .then(() => dispatch(teacherDone()))
             .catch((err) => console.log(err));
-
-            contract.createLearnerContract(data.teacherAddress, data.studentAddress, {
-                from: currentAccount
-            }, function (err, transactionHash) {
-                if (err) { return alert(err); }
-                let interval;
-
-            });
         };
     }
 };

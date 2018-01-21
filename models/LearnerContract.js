@@ -9,7 +9,6 @@ const path = require('path');
 const solc = require('solc');
 
 const mongoose = clout.mongoose;
-
 const REQUIRED_PARAMS = ['contractAddress', 'curriculumContract', 'teacher', 'student'];
 
 let contractSource = fs.readFileSync(path.join(__dirname, `solidity/LearnerContract.sol`), 'utf8');
@@ -37,10 +36,11 @@ Contract.getAll = function () {
 }
 
 Contract.create = function (params) {
-	let missingParams;
+	let missingParams = false;
 
 	REQUIRED_PARAMS.forEach((key) => {
 		if (typeof params[key] === 'undefined') {
+			console.log(`${key} is missing`);
 			missingParams = true;
 		}
 	});

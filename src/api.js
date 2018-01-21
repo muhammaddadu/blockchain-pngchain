@@ -13,10 +13,10 @@ module.exports = {
     },
     learner: {
         create(params) {
-            return axios.put(`/api/curriculum`, params);
+            return axios.put(`/api/learner`, params);
         },
         getAll() {
-            return axios.get(`/api/curriculum`)
+            return axios.get(`/api/learner`)
                 .then(response => response.data.data);
         }
     }
