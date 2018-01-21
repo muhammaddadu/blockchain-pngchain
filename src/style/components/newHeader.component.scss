@@ -55,3 +55,49 @@ html, body, #app, #app>div, #app>div>main {
     border: 1px solid black;
     background-color: white;
 }
+
+.formItems {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.formItems > li {
+    margin-bottom: 16px;
+}
+
+.formItems > li:last-child {
+    margin-bottom: 0;
+}
+
+.formItemStyle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.w-150 {
+    width: 150px;
+}
+
+.w-175 {
+    width: 175px;
+}
+
+.checkboxContainer {
+    height: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.m-05rem {
+    margin-bottom: .5rem;
+}
+
+.gradeButton {
+    width: 65px;
+    height: 50px;
+}

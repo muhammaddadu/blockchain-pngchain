@@ -5,7 +5,7 @@ import React from 'react';
 import {store} from '../../main';
 
 import {connect} from 'react-redux';
-import {setStyle} from '../../actions'
+import {setStyle} from '../../actions';
 
 import { HeaderComponent } from '../../components/header/header.component';
 import { JumbotronComponent } from '../../components/jumbotron/jumbotron.component';

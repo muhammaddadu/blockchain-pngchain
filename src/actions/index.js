@@ -1,4 +1,6 @@
 import headerActions from '../components/header/header.action';
+import govActions from '../containers/gov/gov.action';
+import certActions from '../containers/cert/cert.action';
 
 function createAction(actionType) {
     return data => {
@@ -11,3 +13,5 @@ function createAction(actionType) {
 }
 
 export const setStyle = createAction(headerActions.SET_STYLE);
+export const showForm = createAction(govActions.SHOW_FORM);
+export const showGraduation = createAction(certActions.SHOW_GRADUATION);
