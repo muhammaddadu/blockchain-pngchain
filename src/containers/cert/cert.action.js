@@ -1,3 +1,4 @@
 export default {
     SHOW_GRADUATION: 'SHOW_GRADUATION',
+    SHOW_GRADING_MSG: 'SHOW_GRADING_MSG'
 };

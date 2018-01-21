@@ -8,6 +8,10 @@ export function certReducer(state={}, action) {
             return {...state, ...{
                 graduation: true
             }};
+        case 'SHOW_GRADING_MSG':
+            return {...state, ...{
+                done: true
+            }};
         default:
             return state;
     }

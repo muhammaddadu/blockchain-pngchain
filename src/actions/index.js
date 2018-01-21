@@ -16,6 +16,7 @@ function createAction(actionType) {
 }
 
 export const showGraduation = createAction(certActions.SHOW_GRADUATION);
+export const showGradingMessage = createAction(certActions.SHOW_GRADING_MSG);
 
 export const showForm = createAction(govActions.SHOW_FORM);
 export const showSpinner = createAction(govActions.SHOW_SPINNER);
