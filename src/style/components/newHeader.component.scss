@@ -130,3 +130,44 @@ html, body, #app, #app>div, #app>div>main {
                 transform: rotate(360deg);
     }
 }
+
+.contratInfoContainer {
+    width: 100%;
+    border: 1px solid black;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.contratInfoItem {
+    width: calc(100% - 16px);
+    margin: 4px 8px;
+}
+
+.contratInfoItem:first-child {
+    margin: 8px 8px;
+}
+
+.contratInfoItem:last-child {
+    margin: 4px 8px 8px;
+}
+
+.m-b-4 {
+    margin-bottom: 16px;
+}
+
+.p-0 {
+    padding: 0 !important;
+}
+
+.m-0 {
+    margin: 0 !important;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.m-b-2 {
+    margin-bottom: 8px;
+}

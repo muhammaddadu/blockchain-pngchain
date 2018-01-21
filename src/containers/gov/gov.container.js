@@ -5,6 +5,8 @@ import {showForm, govSubmitRequest, showSpinner, govDone, loadCurriculum, loadCu
 
 import { CommonHeader } from '../../components/header/commonHeader.component';
 
+const _ = require('lodash');
+
 export class GovPage extends React.Component {
     constructor(props) {
         super(props);
@@ -29,6 +31,9 @@ export class GovPage extends React.Component {
 
     addPNGTokens(evt) {
         let item = JSON.parse(evt.target.getAttribute('item'));
+        let tokenValue = parseInt(document.getElementById('tokenValue').value, 10);
+
+        _.extend(item, {amount: tokenValue});
         this.props.onAddPNGTokens(item);
     }
 
@@ -75,23 +80,23 @@ export class GovPage extends React.Component {
                         <ul className="formItems">
                             <li className="formItemStyle">
                                 <label htmlFor="contractTitle" className="w-150">Title: </label>
-                                <input type="text" onChange={this.handleInputChange('contractTitle')} value={this.state.contractTitle} id="contractTitle" placeholder="'Teaching English'"/>
+                                <input type="text" onChange={this.handleInputChange('contractTitle')} defaultValue={this.state.contractTitle} id="contractTitle" placeholder="'Teaching English'"/>
                             </li>
                             <li className="formItemStyle">
                                 <label htmlFor="contractDescription" className="w-150">Description: </label>
-                                <input type="text" onChange={this.handleInputChange('contractDescription')} value={this.state.contractDescription} id="contractDescription" placeholder="'Teaching English so they can pass the test'"/>
+                                <input type="text" onChange={this.handleInputChange('contractDescription')} defaultValue={this.state.contractDescription} id="contractDescription" placeholder="'Teaching English so they can pass the test'"/>
                             </li>
                             <li className="formItemStyle">
                                 <label htmlFor="contractValidate" className="w-150">How to validate: </label>
-                                <input type="text" onChange={this.handleInputChange('contractValidate')} value={this.state.contractValidate} id="contractValidate" placeholder="'Passing the test'"/>
+                                <input type="text" onChange={this.handleInputChange('contractValidate')} defaultValue={this.state.contractValidate} id="contractValidate" placeholder="'Passing the test'"/>
                             </li>
                             <li className="formItemStyle">
                                 <label htmlFor="contractValueStudent" className="w-150">Value Student: </label>
-                                <input type="number" onChange={this.handleInputChange('contractValueStudent')} value={this.state.contractValueStudent} id="contractValueStudent" placeholder="'Student earnings'"/>
+                                <input type="number" onChange={this.handleInputChange('contractValueStudent')} defaultValue={this.state.contractValueStudent} id="contractValueStudent" placeholder="'Student earnings'"/>
                             </li>
                             <li className="formItemStyle">
                                 <label htmlFor="contractValueTeacher" className="w-150">Value Teacher: </label>
-                                <input type="number" onChange={this.handleInputChange('contractValueTeacher')} value={this.state.contractValueTeacher} id="contractValueTeacher" placeholder="'Teacher earnings'"/>
+                                <input type="number" onChange={this.handleInputChange('contractValueTeacher')} defaultValue={this.state.contractValueTeacher} id="contractValueTeacher" placeholder="'Teacher earnings'"/>
                             </li>
                             <li className="formItemStyle">
                                 <input type="submit" value="Submit" onClick={this.handleSubmitClick.bind(this)}/>
@@ -101,6 +106,8 @@ export class GovPage extends React.Component {
                 </div>
             );
         } else {
+            let accountTokens = 200000;
+
             return (
                 <div className="mainContainer">
                     <CommonHeader title={'Goverment'} />
@@ -118,8 +125,37 @@ export class GovPage extends React.Component {
                             <div className="col-sm-8 formContainer">
                                 {this.props.gov.curriculumInfo ? (
                                     <div>
-                                        <pre>{JSON.stringify(this.props.gov.curriculumInfo, null, '\t')}</pre>
-                                        <button item={JSON.stringify(this.props.gov.curriculumInfo)} onClick={this.addPNGTokens.bind(this)} type="button" className="btn btn-success">+ PNGTokens (Budget)</button>
+                                        <ul className="contratInfoContainer m-b-4">
+                                            <li className="contratInfoItem text-center">
+                                                <strong>{this.props.gov.curriculumInfo.title}</strong>
+                                            </li>
+                                            <li className="contratInfoItem">
+                                                <strong>Description</strong>: {this.props.gov.curriculumInfo.description}
+                                            </li>
+                                            <li className="contratInfoItem">
+                                                <strong>Validation method</strong>: {this.props.gov.curriculumInfo.validationMethod}
+                                            </li>
+                                            <li className="contratInfoItem row">
+                                                <div className="col-sm-6 p-0">
+                                                    <strong>Teacher reward</strong>: {this.props.gov.curriculumInfo.teacherReward}
+                                                </div>
+                                                <div className="col-sm-6 p-0">
+                                                    <strong>Student reward</strong>: {this.props.gov.curriculumInfo.studentReward}
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div className="row justify-content-between m-0">
+                                            <div className="col-sm-6 p-0">
+                                                <strong>Account Tokens</strong>
+                                            </div>
+                                            <div className="col-sm-6 p-0 text-right m-b-2">
+                                                {accountTokens}
+                                            </div>
+                                        </div>
+                                        <div className="row justify-content-between m-0">
+                                            <input type="number" id="tokenValue" step="1" min="0" className="col-sm-4" defaultValue="1"/>
+                                            <button item={JSON.stringify(this.props.gov.curriculumInfo)} onClick={this.addPNGTokens.bind(this)} type="button" className="btn btn-success col-sm-6">+ PNGTokens (Budget)</button>
+                                        </div>
                                     </div>
                                 ) : (
                                     <h4>Please select a curriculum from the left to see more information</h4>
