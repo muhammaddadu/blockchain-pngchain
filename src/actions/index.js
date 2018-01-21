@@ -38,12 +38,7 @@ export const studentSubmitRequest = (data) => {
 
 export const showTeacherSpinner = createAction(teacherActions.SHOW_TEACHER_SPINNER);
 export const teacherDone = createAction(teacherActions.TEACHER_DONE);
-export const teacherSubmitRequest = (data) => {
-    return (dispatch) => {
-        dispatch(showTeacherSpinner(data));
-        setTimeout(() => dispatch(teacherDone(data)), 2000);
-    };
-};
+export const teacherSubmitRequest = teacherActions.teacherSubmitRequest;
 
 /**
  * PNGToken Actions
