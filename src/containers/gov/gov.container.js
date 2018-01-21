@@ -2,6 +2,7 @@ import React from 'react';
 
 import {connect} from 'react-redux';
 import {showForm} from '../../actions';
+import {showSpinner} from '../../actions';
 
 import { CommonHeader } from '../../components/header/commonHeader.component';
 
@@ -14,11 +15,33 @@ export class GovPage extends React.Component {
     handleClick() {
         this.props.onShowForm();
     }
+    
+    handleSubmitClick() {
+        this.props.onShowSpinner();
+    }
 
     render() {
-        console.log('props', this.props);
-
-        if (this.props.gov.form) {
+        if (this.props.gov.done) {
+            return (
+                <div className="mainContainer">
+                    <CommonHeader title={'Goverment'} />
+                    <div className="w-50 formContainer text-center">
+                        Teaching contract created
+                    </div>
+                </div>
+            );
+        }
+        else if (this.props.gov.spinner) {
+            return (
+                <div className="mainContainer">
+                    <CommonHeader title={'Goverment'} />
+                    <div className="w-50 formContainer">
+                        <div className="spinner"></div>
+                    </div>
+                </div>
+            );
+        }
+        else if (this.props.gov.form) {
             return (
                 <div className="mainContainer">
                     <CommonHeader title={'Goverment'} />
@@ -45,7 +68,7 @@ export class GovPage extends React.Component {
                                 <input type="text" id="contractValueTeacher" placeholder="'Teacher earnings'"/>
                             </li>
                             <li className="formItemStyle">
-                                <input type="submit" value="Submit"/>
+                                <input type="submit" value="Submit" onClick={this.handleSubmitClick.bind(this)}/>
                             </li>
                         </ul>
                     </div>
@@ -72,7 +95,8 @@ const stateToProps = (state) => {
 
 const dispatchToProps = (dispatch) => {
     return {
-        onShowForm: (...args) => dispatch(showForm(...args))
+        onShowForm: (...args) => dispatch(showForm(...args)),
+        onShowSpinner: (...args) => dispatch(showSpinner(...args))
     };
 };
 
@@ -80,27 +104,3 @@ export const GovPageContainer = connect(stateToProps, dispatchToProps)(GovPage);
 
 export default GovPageContainer;
 
-// export function GovContainer(props) {
-//     function handleClick() {
-//         console.log('clicked');
-//     }
-
-//     if (props.form) {
-//         return (
-//             <div className="mainContainer">
-//                 works!
-//             </div>
-//         );
-//     } else {
-//         return (
-//             <div className="mainContainer">
-//                 <CommonHeader title={'Goverment'} />
-//                 <div className="w-50 formContainer">
-//                     <button onClick={handleClick}>Add</button>
-//                 </div>
-//             </div>
-//         );
-//     }
-// }
-
-// export default GovContainer;

@@ -8,6 +8,10 @@ export function govReducer(state={}, action) {
             return {...state, ...{
                 form: true
             }};
+        case 'SHOW_SPINNER':
+            return {...state, ...{
+                spinner: true
+            }};
         default:
             return state;
     }

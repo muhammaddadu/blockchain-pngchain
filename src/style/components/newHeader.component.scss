@@ -101,3 +101,32 @@ html, body, #app, #app>div, #app>div>main {
     width: 65px;
     height: 50px;
 }
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    margin: 0 auto;
+
+    animation: circle infinite .75s linear;
+    border: .125rem solid rgba(41, 46, 49, 0.32);
+    border-top-color: #292e31;
+    border-radius: 100%;
+}
+
+@keyframes circle
+{
+    0%
+    {
+        -webkit-transform: rotate(0);
+            -ms-transform: rotate(0);
+             -o-transform: rotate(0);
+                transform: rotate(0);
+    }
+    100%
+    {
+        -webkit-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+             -o-transform: rotate(360deg);
+                transform: rotate(360deg);
+    }
+}

@@ -14,4 +14,5 @@ function createAction(actionType) {
 
 export const setStyle = createAction(headerActions.SET_STYLE);
 export const showForm = createAction(govActions.SHOW_FORM);
+export const showSpinner = createAction(govActions.SHOW_SPINNER);
 export const showGraduation = createAction(certActions.SHOW_GRADUATION);
