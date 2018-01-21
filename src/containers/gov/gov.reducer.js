@@ -24,6 +24,10 @@ export function govReducer(state={}, action) {
             return {...state, ...{
                 curriculumInfo: action.data
             }};
+        case 'PNG_TOKENS_ADDED':
+            return {...state, ...{
+                spinner: false
+            }};
         default:
             return state;
     }

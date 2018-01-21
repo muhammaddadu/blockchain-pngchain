@@ -52,6 +52,7 @@ export const addPNGTokens = (data) => {
             from: currentAccount
         }, (err, address) => {
             if (err) { alert(err); }
+            dispatch(loadCurriculumInfo(data));
             dispatch(pNGTokensAdded());
         });
     };
@@ -81,7 +82,6 @@ export const loadCurriculumInfo = (_data) => {
         let responsesWanted = contractFields.length;
         
         contractFields.forEach((key) => {
-            console.log(key);
             myContract[key]((err, value) => {
                 if (err) { alert(err); }
                 data[key] = value;
